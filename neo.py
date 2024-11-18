@@ -49,36 +49,36 @@ def get_cypher_node(list):
     
     # The first item is the initial video ID and title, we assume the format [ID Title]
     main_video_id = list[0]
-    main_video_title = list[1]
-    stat2 = ""
-    stat3 = ""
-    stat4 = ""
-    stat5 = ""
-    stat6 = ""
-    stat7 = ""
-    stat8 = ""
+    main_video_creator = list[1]
+    age = ""
+    cat = ""
+    length = ""
+    views = ""
+    rate = ""
+    ratings = ""
+    comments = ""
     related_video_ids = []
 
     if list[4] == "&":
-        stat2 = list[2]
-        stat3 = f"['{list[3]}', '{list[5]}']"
-        stat4 = list[6]
-        stat5 = list[7]
-        stat6 = list[8]
-        stat7 = list[9]
-        stat8 = list[10]
+        age = list[2]
+        cat = f"['{list[3]}', '{list[5]}']"
+        length = list[6]
+        views = list[7]
+        rate = list[8]
+        ratings = list[9]
+        comments = list[10]
 
         # The rest of the data consists of video IDs (assume they are related)
         related_video_ids = list[11:]
     
     else:
-        stat2 = list[2]
-        stat3 = f"['{list[3]}']"
-        stat4 = list[4]
-        stat5 = list[5]
-        stat6 = list[6]
-        stat7 = list[7]
-        stat8 = list[8]
+        age = list[2]
+        cat = f"['{list[3]}']"
+        length = list[4]
+        views = list[5]
+        rate = list[6]
+        ratings = list[7]
+        comments = list[8]
     
         # The rest of the data consists of video IDs (assume they are related)
         related_video_ids = list[9:]
@@ -89,7 +89,7 @@ def get_cypher_node(list):
     #cypher_statements = []
       
     # for the node whose entry we find in 0.txt
-    newNode = "CREATE (main:Video {id: '" + main_video_id + "', title: '" + main_video_title + "', category: " + stat3 + ", likes:" + stat2+ ", views:" + stat4+", rating:"+ stat5 +", comments:" + stat6 +", shares:" + stat7+", stat8:" + stat8 +"});"
+    newNode = "CREATE (main:Video {id: '" + main_video_id + "', uploader: '" + main_video_creator + "', age: " + age + ", category:" + cat+ ", length:" + length+", views:"+ views +", rate:" + rate +", ratings:" + ratings+", comments:" + comments +"});"
     print(newNode)
     return newNode
 
