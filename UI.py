@@ -12,6 +12,22 @@ from Algos import common_category_overlap as cco
 from Algos import query as qry
 from Algos import queryrelation as qryrel
 
+
+def convert_to_graph_format(data):
+    nodes = {}
+    edges = []
+
+    # Generate nodes
+    for key, value in data.items():
+        nodes[key] = {"name": f"Node {value['original']}"}
+
+    # Generate edges
+    for key, value in data.items():
+        for outgoing in value["outgoing"]:
+            edges.append({"node1": key, "node2": outgoing})
+
+    return nodes, edges
+
 #DO NOT TOUCH THESE TWO LINES
 # these two HAVE to be above everything else, except for the import statements
 main = tk.Tk()
@@ -104,6 +120,9 @@ def query_relation():
     result = str(qryrel.ui_run(vidID))
 
     outputLabel.config(text = result)
+    data = {vidID:result}
+    nodes, edges = convert_to_graph_format(result)
+    display.run(nodes, edges)
 
 
 #array of buttons for easy grid making
@@ -181,3 +200,7 @@ outputLabel = tk.Label(main, text = "temp")
 outputLabel.grid(row= 0, column = 2)
 
 main.mainloop()
+
+
+
+
