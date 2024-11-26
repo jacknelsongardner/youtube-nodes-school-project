@@ -19,6 +19,7 @@ def find_categories_with_highest_shared_recommendations(tx):
 
 
 if __name__ == "__main__":
+def ui_run():
     with driver.session() as session:
         result = session.execute_read(find_categories_with_highest_shared_recommendations)
         runtime = time.time() - start
@@ -28,3 +29,5 @@ if __name__ == "__main__":
         with open('most_mutually_related_categories.txt', 'w') as f:
             f.write(f"The two categories recommended together most often are: {result['category_a']} and {result['category_b']} \n")
             f.write(f"Runtime (seconds): {runtime}\n")
+
+    return result['category_a'], result['category_b']

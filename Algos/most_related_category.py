@@ -18,6 +18,7 @@ def most_related_category(tx):
     return result.single()
 
 if __name__ == "__main__":
+def ui_run():
     with driver.session() as session:
         result = session.execute_read(most_related_category)
         runtime = time.time() - start
@@ -27,3 +28,5 @@ if __name__ == "__main__":
         with open('most_related_category.txt', 'w') as f:
             f.write(f"Most related category: {result['category']} \n")
             f.write(f"Runtime (seconds): {runtime}\n")
+
+        return result['category']
