@@ -77,7 +77,6 @@ def most_recommended_uploader_query():
     uploader = mru.ui_run()
     outputLabel.config(text = "The most recommended uploader is " + uploader)
 
-<<<<<<< HEAD
 def most_commonly_overlapping_categories_query():
     global executeQuery
     print("Running query")
@@ -93,7 +92,6 @@ def most_recommended_category_query():
     category = category[0]
     outputLabel.config(text = "The most recommended category is " + category)
     
-=======
 def topXViewedVideos():
     global executeQuery
     instructionLabel.config(text= "How many?")
@@ -102,7 +100,6 @@ def topXViewedVideos():
 
     result = mostViews.topXVideos(num1)
     outputLabel.config(text = result)
->>>>>>> d40668c197740d75714072cd92dcba9a6c625889
 
 #array of buttons for easy grid making
 buttonsArray = []
