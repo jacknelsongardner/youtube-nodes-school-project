@@ -62,6 +62,11 @@ buttonsArray.append(topViewedVideosCategoryButton)
 topViewedCategoriesButton = tk.Button(main, text = 'Top Viewed Categories', command = query1)
 buttonsArray.append(topViewedCategoriesButton)
 
+mostRecommendedCatFromVidButton = tk.Button(main, text = 'Top Recommended Category from Video', command = query1)
+buttonsArray.append(mostRecommendedCatFromVidButton)
+
+mostCommonMutualRecCatButton = tk.Button(main, text = 'Top Most Common Mutually Recommended Category', command = query1)
+buttonsArray.append(mostCommonMutualRecCatButton)
 
 
 #after making all the buttons, this will add them
