@@ -22,7 +22,7 @@ def most_related_uploader(tx):
     """)
     return result.single()
 
-if __name__ == "__main__":
+def ui_run():
     with driver.session() as session:
         result = session.execute_read(most_related_uploader)
         runtime = time.time() - start
@@ -32,3 +32,5 @@ if __name__ == "__main__":
         with open('most_related_uploader.txt', 'w') as f:
             f.write(f"Most related uploader: {result['uploader']} \n")
             f.write(f"Runtime (seconds): {runtime}\n")
+
+    return result['uploader']
