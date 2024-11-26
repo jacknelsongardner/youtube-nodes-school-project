@@ -117,11 +117,11 @@ def query_relation():
     executeButton.wait_variable(executeQuery)
     vidID = str(userEntry.get())
 
-    result = str(qryrel.ui_run(vidID))
+    result = qryrel.ui_run(vidID)
 
-    outputLabel.config(text = result)
+    outputLabel.config(text = str(result))
     data = {vidID:result}
-    nodes, edges = convert_to_graph_format(result)
+    nodes, edges = convert_to_graph_format(data)
     display.run(nodes, edges)
 
 
