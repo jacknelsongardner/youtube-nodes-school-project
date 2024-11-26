@@ -18,7 +18,7 @@ def find_categories_with_highest_shared_recommendations(tx):
     return result.single()
 
 
-if __name__ == "__main__":
+
 def ui_run():
     with driver.session() as session:
         result = session.execute_read(find_categories_with_highest_shared_recommendations)
@@ -31,3 +31,6 @@ def ui_run():
             f.write(f"Runtime (seconds): {runtime}\n")
 
     return result['category_a'], result['category_b']
+
+if __name__ == "__main__":
+    ui_run()
