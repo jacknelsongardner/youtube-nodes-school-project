@@ -4,6 +4,10 @@ from datetime import datetime
 # Get the current time
 start = datetime.now()
 
+import config
+
+# Initialize the Neo4j driver
+driver = config.DRIVER
 
 def connect_to_neo4j(uri, username, password):
     """
@@ -12,7 +16,7 @@ def connect_to_neo4j(uri, username, password):
     driver = GraphDatabase.driver(uri, auth=(username, password))
     return driver
 
-def query_node_and_relations(driver, video_id):
+def query_node_and_relations( video_id="LKh7zAJ4nwo"):
     """
     Queries a specific node by video_id and retrieves all relationships and attributes of the node.
     """
@@ -50,32 +54,31 @@ def query_node_and_relations(driver, video_id):
             
             print("-" * 40)
 
-def close_neo4j_connection(driver):
+def close_neo4j_connection(driver=driver):
     """
     Closes the connection to the Neo4j database.
     """
     driver.close()
 
-uri = "bolt://localhost:7687"  # Neo4j URI
-username = "jack"  # Neo4j username
-password = "Xfiles12345!!!!!"  # Neo4j password
-video_id = "LKh7zAJ4nwo"  # Replace with your specific video_id
+def ui_run(video_id):
+    # Query the node and its relations
+    query_node_and_relations(video_id)
 
-# Connect to Neo4j
-driver = connect_to_neo4j(uri, username, password)
-
-# Query the node and its relations
-query_node_and_relations(driver, video_id)
-
-# Close the connection
-close_neo4j_connection(driver)
+    # Close the connection
+    close_neo4j_connection(driver)
 
 
-end = datetime.now()
+    end = datetime.now()
 
-print(start)
-print(end)
-print(end - start)
+    print(start)
+    print(end)
+    print(end - start)
+
+if __name__ == "__main__":
+
+    video_id = "LKh7zAJ4nwo"  # Replace with your specific video_id
+
+    ui_run(video_id=video_id)
 
 
 

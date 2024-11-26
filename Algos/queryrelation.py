@@ -1,5 +1,9 @@
 from neo4j import GraphDatabase
 
+import config
+
+driver = config.DRIVER
+
 def connect_to_neo4j(uri, username, password):
     """
     Establishes a connection to the Neo4j database.
@@ -7,7 +11,7 @@ def connect_to_neo4j(uri, username, password):
     driver = GraphDatabase.driver(uri, auth=(username, password))
     return driver
 
-def get_all_relationships(driver, node_value):
+def get_all_relationships( node_value):
     """
     Queries all relationships for a node by its ID and prints related node IDs.
     """
@@ -47,24 +51,24 @@ def get_all_relationships(driver, node_value):
         if not relationships_found:
             print("No relationships found for this node.")
 
-def close_neo4j_connection(driver):
+def close_neo4j_connection():
     """
     Closes the connection to the Neo4j database.
     """
     driver.close()
 
 if __name__ == "__main__":
-    # Replace with your Neo4j connection details and node ID
-    uri = "bolt://localhost:7687"  # Neo4j URI
-    username = "jack"  # Neo4j username
-    password = "Xfiles12345!!!!!"  # Neo4j password
     node_value = "OM_Rx-5UYuw"  # Replace with the specific node ID
 
-    # Connect to Neo4j
-    driver = connect_to_neo4j(uri, username, password)
-
     # Get all relationships for the node and print related node IDs
-    get_all_relationships(driver, node_value)
+    get_all_relationships(node_value)
+
+    # Close the connection
+    close_neo4j_connection(driver)
+
+def ui_run(node_value):
+    # Get all relationships for the node and print related node IDs
+    get_all_relationships(node_value)
 
     # Close the connection
     close_neo4j_connection(driver)

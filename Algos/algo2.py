@@ -1,16 +1,15 @@
 from neo4j import GraphDatabase
 from pyspark.sql import SparkSession
 import time
+import config
 #most common categories algorithm
 
 # Replace these with your Neo4j credentials
-uri = "bolt://localhost:7687"  # Neo4j Bolt protocol address
-username = "kai"
-password = "abcd1234"
+
 
 # Initialize the Neo4j driver
-driver = GraphDatabase.driver(uri, auth=(username, password))
 
+driver = config.DRIVER
 start = time.time()
 
 def get_related(tx):
