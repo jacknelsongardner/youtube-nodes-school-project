@@ -98,7 +98,7 @@ def topXViewedVideos():
     executeButton.wait_variable(executeQuery)
     num1 = int(userEntry.get())
 
-    result = mostViews.topXVideos(num1)
+    result = "" #mostViews.topXVideos(num1)
     outputLabel.config(text = result)
 
 #array of buttons for easy grid making
