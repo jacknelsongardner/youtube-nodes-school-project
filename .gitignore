@@ -5,3 +5,6 @@
 2.txt
 4.txt
 Algos/config.json
+__pycache__/
+*.py[cod]
+*$py.class
