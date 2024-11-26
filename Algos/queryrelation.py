@@ -53,17 +53,18 @@ def close_neo4j_connection(driver):
     """
     driver.close()
 
-# Replace with your Neo4j connection details and node ID
-uri = "bolt://localhost:7687"  # Neo4j URI
-username = "jack"  # Neo4j username
-password = "Xfiles12345!!!!!"  # Neo4j password
-node_value = "OM_Rx-5UYuw"  # Replace with the specific node ID
+if __name__ == "__main__":
+    # Replace with your Neo4j connection details and node ID
+    uri = "bolt://localhost:7687"  # Neo4j URI
+    username = "jack"  # Neo4j username
+    password = "Xfiles12345!!!!!"  # Neo4j password
+    node_value = "OM_Rx-5UYuw"  # Replace with the specific node ID
 
-# Connect to Neo4j
-driver = connect_to_neo4j(uri, username, password)
+    # Connect to Neo4j
+    driver = connect_to_neo4j(uri, username, password)
 
-# Get all relationships for the node and print related node IDs
-get_all_relationships(driver, node_value)
+    # Get all relationships for the node and print related node IDs
+    get_all_relationships(driver, node_value)
 
-# Close the connection
-close_neo4j_connection(driver)
+    # Close the connection
+    close_neo4j_connection(driver)

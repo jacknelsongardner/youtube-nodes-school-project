@@ -22,12 +22,13 @@ def most_related_uploader(tx):
     """)
     return result.single()
 
-with driver.session() as session:
-    result = session.execute_read(most_related_uploader)
-    runtime = time.time() - start
-    print(f"Most related uploader: {result['uploader']}")
-    print(f"Runtime (seconds): {runtime}\n")
+if __name__ == "__main__":
+    with driver.session() as session:
+        result = session.execute_read(most_related_uploader)
+        runtime = time.time() - start
+        print(f"Most related uploader: {result['uploader']}")
+        print(f"Runtime (seconds): {runtime}\n")
 
-    with open('most_related_uploader.txt', 'w') as f:
-        f.write(f"Most related uploader: {result['uploader']} \n")
-        f.write(f"Runtime (seconds): {runtime}\n")
+        with open('most_related_uploader.txt', 'w') as f:
+            f.write(f"Most related uploader: {result['uploader']} \n")
+            f.write(f"Runtime (seconds): {runtime}\n")
