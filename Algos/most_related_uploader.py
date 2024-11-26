@@ -1,14 +1,12 @@
 from neo4j import GraphDatabase
 import time
-import Algos.config as config
+import config
 
 start = time.time()
 
 
 # Initialize the Neo4j driver
 driver = config.DRIVER
-
-
 
 def most_related_uploader(tx):
     result = tx.run("""
@@ -19,10 +17,10 @@ def most_related_uploader(tx):
     """)
     return result.single()
 
-
 def ui_run():
     with driver.session() as session:
         result = session.execute_read(most_related_uploader)
+        print()
         runtime = time.time() - start
         print(f"Most related uploader: {result['uploader']}")
         print(f"Runtime (seconds): {runtime}\n")

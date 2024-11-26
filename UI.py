@@ -1,6 +1,9 @@
 import tkinter as tk
-import mostViews
+
+import display
+
 from Algos import most_related_uploader as mru
+import Algos
 from Algos import most_related_category as mrc
 from Algos import most_related_forVideo as mrfv
 from Algos import common_category_overlap as cco
@@ -21,29 +24,6 @@ def execute():
         executeQuery.set(True)
     else:
         executeQuery.set(False)
-
-#add handlers for events here, do entry as shown in example.
-# Stick your query outputs in the query output text widget.
-#explenation:
-#Heres the format for doing the stuff:
-#def query1():
-    # global executeQuery
-    #   <In the instruction label, place the text explaining what the user needs to do>
-    # instructionLabel.config(text= "please enter number 1")
-    #   <This will make the UI wait until the execute button is pressed.>
-    # executeButton.wait_variable(executeQuery)
-    #   <After the execute button is pressed, take the stuff from the user entry box and put it in a variable>
-    # num1 = int(userEntry.get())
-    #   <Change instructions again if need be and wait again if need be>
-    # instructionLabel.config(text= "please enter number 2")
-    # executeButton.wait_variable(executeQuery)
-    # num2 = int(userEntry.get())
-    #   <Now, you can take the info you got from the user and pop it in to the query. Take the result, and set the
-    #   Output label as need be, like so:>
-    #outputLabel.config(text = result)
-
-#Once you have made your query function, go find the button for your query, and change the command parameter to the name of your function, WITHOUT the ()
-
 
 def query1():
     global executeQuery
@@ -98,7 +78,7 @@ def topXViewedVideos():
     executeButton.wait_variable(executeQuery)
     num1 = int(userEntry.get())
 
-    result = mostViews.topXVideos(num1)
+    result = "" #mostViews.topXVideos(num1)
     outputLabel.config(text = result)
 
 #array of buttons for easy grid making
@@ -119,12 +99,14 @@ buttonsArray.append(topRelatedCategoryButton)
 topCategoriesButton = tk.Button(main, text = 'Top Categories', command = query1)
 buttonsArray.append(topCategoriesButton)
 
+mostRecommendedCategoryButton = tk.Button(main, text = 'Most Recommended Category', command = query1)
 mostRecommendedCategoryButton = tk.Button(main, text = 'Most Recommended Category', command = most_recommended_category_query)
 buttonsArray.append(mostRecommendedCategoryButton)
 
 mostRecommendedUploaderButton = tk.Button(main, text = 'Most Recommended Uploader', command = most_recommended_uploader_query)
 buttonsArray.append(mostRecommendedUploaderButton)
 
+topViewedVideosButton = tk.Button(main, text = 'Top Viewed Videos', command = query1)
 topViewedVideosButton = tk.Button(main, text = 'Top Viewed Videos', command = topXViewedVideos)
 buttonsArray.append(topViewedVideosButton)
 

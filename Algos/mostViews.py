@@ -1,11 +1,9 @@
 from neo4j import GraphDatabase
 import time
-uri = "bolt://localhost:7687"  # Neo4j Bolt protocol address
-username = "a"
-password = "MoviesAreNe4t."
+import config
 
 # Initialize the Neo4j driver
-driver = GraphDatabase.driver(uri, auth=(username, password))
+driver = config.DRIVER
 
 def getKey(val):
     return val[1]
