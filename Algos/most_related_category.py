@@ -17,7 +17,6 @@ def most_related_category(tx):
     """)
     return result.single()
 
-if __name__ == "__main__":
 def ui_run():
     with driver.session() as session:
         result = session.execute_read(most_related_category)

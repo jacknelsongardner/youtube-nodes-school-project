@@ -1,6 +1,9 @@
 import tkinter as tk
 from Algos import most_related_uploader as mru
 import Algos
+from Algos import most_related_category as mrc
+from Algos import most_related_forVideo as mrfv
+from Algos import common_category_overlap as cco
 
 #DO NOT TOUCH THESE TWO LINES
 # these two HAVE to be above everything else, except for the import statements
@@ -56,11 +59,47 @@ def query1():
     print(num2)
     outputLabel.config(text = str(num1) + " " + str(num2))
 
+def most_recommended_category_for_video_query():
+    global executeQuery
+    print("instructions label setting")
+    instructionLabel.config(text= "Please enter video ID")
+    executeButton.wait_variable(executeQuery)
+    vidID = (userEntry.get())
+    
+    print(vidID)
+    category = mrfv.ui_run(vidID)
+    category = category[0]
+    outputLabel.config(text = "The most recommended category for video: " +  vidID + " is " + category)
+
 def most_recommended_uploader_query():
     global executeQuery
     print("Running query")
     uploader = mru.ui_run()
     outputLabel.config(text = "The most recommended uploader is " + uploader)
+
+def most_commonly_overlapping_categories_query():
+    global executeQuery
+    print("Running query")
+    catA, catB = cco.ui_run()
+    catA = catA[0]
+    catB = catB[0]
+    outputLabel.config(text = "The two most frequently recommended together categories are " + catA + " and " + catB)
+
+def most_recommended_category_query():
+    global executeQuery
+    print("Running query")
+    category = mrc.ui_run()
+    category = category[0]
+    outputLabel.config(text = "The most recommended category is " + category)
+    
+def topXViewedVideos():
+    global executeQuery
+    instructionLabel.config(text= "How many?")
+    executeButton.wait_variable(executeQuery)
+    num1 = int(userEntry.get())
+
+    result = mostViews.topXVideos(num1)
+    outputLabel.config(text = result)
 
 #array of buttons for easy grid making
 buttonsArray = []
@@ -81,12 +120,14 @@ topCategoriesButton = tk.Button(main, text = 'Top Categories', command = query1)
 buttonsArray.append(topCategoriesButton)
 
 mostRecommendedCategoryButton = tk.Button(main, text = 'Most Recommended Category', command = query1)
+mostRecommendedCategoryButton = tk.Button(main, text = 'Most Recommended Category', command = most_recommended_category_query)
 buttonsArray.append(mostRecommendedCategoryButton)
 
 mostRecommendedUploaderButton = tk.Button(main, text = 'Most Recommended Uploader', command = most_recommended_uploader_query)
 buttonsArray.append(mostRecommendedUploaderButton)
 
 topViewedVideosButton = tk.Button(main, text = 'Top Viewed Videos', command = query1)
+topViewedVideosButton = tk.Button(main, text = 'Top Viewed Videos', command = topXViewedVideos)
 buttonsArray.append(topViewedVideosButton)
 
 topViewedVideosCategoryButton = tk.Button(main, text = 'Top Viewed Video in Category', command = query1)
@@ -100,6 +141,12 @@ buttonsArray.append(mostRecommendedCatFromVidButton)
 
 mostCommonMutualRecCatButton = tk.Button(main, text = 'Top Most Common Mutually Recommended Category', command = query1)
 buttonsArray.append(mostCommonMutualRecCatButton)
+
+most_commonly_overlappingButton = tk.Button(main, text = "Top two categories which are recommended together the most", command = most_commonly_overlapping_categories_query)
+buttonsArray.append(most_commonly_overlappingButton)
+
+most_recommended_cat_for_video_button = tk.Button(main, text = "Most Recommended Category for a VideoID", command=most_recommended_category_for_video_query)
+buttonsArray.append(most_recommended_cat_for_video_button)
 
 
 #after making all the buttons, this will add them
