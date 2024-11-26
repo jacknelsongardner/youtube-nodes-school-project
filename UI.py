@@ -1,7 +1,7 @@
 import tkinter as tk
 
 import display
-
+import ast
 
 import Algos
 from Algos import most_related_uploader as mru
@@ -11,6 +11,8 @@ from Algos import common_category_overlap as cco
 from Algos import common_category_overlap as cco
 from Algos import query as qry
 from Algos import queryrelation as qryrel
+from Algos import most_related_forCategory as mrfc
+from Algos import most_related_forUser as mrfu
 
 
 def convert_to_graph_format(data):
@@ -58,6 +60,28 @@ def query1():
     print(num1)
     print(num2)
     outputLabel.config(text = str(num1) + " " + str(num2))
+
+def most_recommended_video_for_user_query():
+    global executeQuery
+    instructionLabel.config(text= "Please enter uploader ID")
+    executeButton.wait_variable(executeQuery)
+    uploaderID = (userEntry.get())
+    
+    print(uploaderID)
+    video = mrfu.ui_run(uploaderID)
+    videoid = video
+    outputLabel.config(text = f"The most recommended video for uploader: {uploaderID} is {videoid}")
+
+def most_recommended_video_for_category_query():
+    global executeQuery
+    instructionLabel.config(text= "Please enter category")
+    executeButton.wait_variable(executeQuery)
+    categories = ast.literal_eval(userEntry.get())
+    
+    print(categories)
+    video = mrfc.ui_run(categories)
+    videoid = video
+    outputLabel.config(text = f"The most recommended video for category: {categories} is {videoid}" )
 
 def most_recommended_category_for_video_query():
     global executeQuery
@@ -125,6 +149,7 @@ def query_relation():
     display.run(nodes, edges)
 
 
+
 #array of buttons for easy grid making
 buttonsArray = []
 #add buttons here in this format, set command to correct function
@@ -172,6 +197,11 @@ buttonsArray.append(most_commonly_overlappingButton)
 most_recommended_cat_for_video_button = tk.Button(main, text = "Most Recommended Category for a VideoID", command=most_recommended_category_for_video_query)
 buttonsArray.append(most_recommended_cat_for_video_button)
 
+most_recommended_video_for_uploader_button = tk.Button(main, text = "Most Recommended Video for an Uploader", command=most_recommended_video_for_user_query)
+buttonsArray.append(most_recommended_video_for_uploader_button)
+
+most_recommended_video_for_category_button = tk.Button(main, text = "Most Recommended Video for a Category", command=most_recommended_video_for_category_query)
+buttonsArray.append(most_recommended_video_for_category_button)
 
 query_video_button = tk.Button(main, text = "Query VideoID", command=query_video)
 buttonsArray.append(query_video_button)
