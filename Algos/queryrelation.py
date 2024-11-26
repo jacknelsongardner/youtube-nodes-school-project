@@ -45,14 +45,14 @@ def get_all_relationships( node_value):
             
             # Check if there are any related nodes and print their IDs
             if related_node:
-                print(f"Related Node ID (Outgoing): {related_node.id}")
+                print(f"Related Node ID (Outgoing): {related_node.get("id")}")
                 relationships_found = True
-                related["outgoing"].append(related_node.id)
+                related["outgoing"].append(related_node.get("id"))
                 
             if related_node_in:
-                print(f"Related Node ID (Incoming): {related_node_in.id}")
+                print(f"Related Node ID (Incoming): {related_node_in.get("id")}")
                 relationships_found = True
-                related["incoming"].append(related_node_in.id)
+                related["incoming"].append(related_node_in.get("id"))
         
         # If no relationships were found
         if not relationships_found:
