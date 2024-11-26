@@ -1,5 +1,6 @@
 import tkinter as tk
 import mostViews
+from Algos import most_related_uploader as mru
 
 #DO NOT TOUCH THESE TWO LINES
 # these two HAVE to be above everything else, except for the import statements
@@ -55,6 +56,12 @@ def query1():
     print(num2)
     outputLabel.config(text = str(num1) + " " + str(num2))
 
+def most_recommended_uploader_query():
+    global executeQuery
+    print("Running query")
+    uploader = mru.ui_run()
+    outputLabel.config(text = "The most recommended uploader is " + uploader)
+
 #array of buttons for easy grid making
 buttonsArray = []
 #add buttons here in this format, set command to correct function
@@ -76,7 +83,7 @@ buttonsArray.append(topCategoriesButton)
 mostRecommendedCategoryButton = tk.Button(main, text = 'Most Recommended Category', command = query1)
 buttonsArray.append(mostRecommendedCategoryButton)
 
-mostRecommendedUploaderButton = tk.Button(main, text = 'Most Recommended Uploader', command = query1)
+mostRecommendedUploaderButton = tk.Button(main, text = 'Most Recommended Uploader', command = most_recommended_uploader_query)
 buttonsArray.append(mostRecommendedUploaderButton)
 
 topViewedVideosButton = tk.Button(main, text = 'Top Viewed Videos', command = query1)
