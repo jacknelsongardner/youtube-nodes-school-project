@@ -17,6 +17,13 @@ def connect_to_neo4j(uri, username, password):
     return driver
 
 def query_node_and_relations( video_id="LKh7zAJ4nwo"):
+    
+    # Get the current time
+    start = datetime.now()
+    print(start)
+    
+    node_result = {}
+
     """
     Queries a specific node by video_id and retrieves all relationships and attributes of the node.
     """
@@ -38,6 +45,8 @@ def query_node_and_relations( video_id="LKh7zAJ4nwo"):
                 print("Node Properties:")
                 for key, value in node.items():
                     print(f"  {key}: {value}")
+                    node_result[key] = value
+                
             
             # Print relationships
             if relation:
@@ -54,6 +63,14 @@ def query_node_and_relations( video_id="LKh7zAJ4nwo"):
             
             print("-" * 40)
 
+        end = datetime.now()
+
+        print(start)
+        print(end)
+
+        return str(node_result)
+        
+
 def close_neo4j_connection(driver=driver):
     """
     Closes the connection to the Neo4j database.
@@ -61,18 +78,14 @@ def close_neo4j_connection(driver=driver):
     driver.close()
 
 def ui_run(video_id):
+    
+    
+    
     # Query the node and its relations
-    query_node_and_relations(video_id)
-
-    # Close the connection
-    close_neo4j_connection(driver)
+    return query_node_and_relations(video_id)
 
 
-    end = datetime.now()
-
-    print(start)
-    print(end)
-    print(end - start)
+    
 
 if __name__ == "__main__":
 

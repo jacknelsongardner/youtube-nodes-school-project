@@ -2,11 +2,15 @@ import tkinter as tk
 
 import display
 
-from Algos import most_related_uploader as mru
+
 import Algos
+from Algos import most_related_uploader as mru
 from Algos import most_related_category as mrc
 from Algos import most_related_forVideo as mrfv
 from Algos import common_category_overlap as cco
+from Algos import common_category_overlap as cco
+from Algos import query as qry
+from Algos import queryrelation as qryrel
 
 #DO NOT TOUCH THESE TWO LINES
 # these two HAVE to be above everything else, except for the import statements
@@ -81,6 +85,16 @@ def topXViewedVideos():
     result = "" #mostViews.topXVideos(num1)
     outputLabel.config(text = result)
 
+def query():
+    global executeQuery
+    instructionLabel.config(text= "What's the videoID?")
+    executeButton.wait_variable(executeQuery)
+    vidID = str(userEntry.get())
+
+    result = str(qry.ui_run(video_id=vidID))
+
+    outputLabel.config(text = result)
+
 #array of buttons for easy grid making
 buttonsArray = []
 #add buttons here in this format, set command to correct function
@@ -127,6 +141,11 @@ buttonsArray.append(most_commonly_overlappingButton)
 
 most_recommended_cat_for_video_button = tk.Button(main, text = "Most Recommended Category for a VideoID", command=most_recommended_category_for_video_query)
 buttonsArray.append(most_recommended_cat_for_video_button)
+
+
+query_video_button = tk.Button(main, text = "Query VideoID", command=query)
+buttonsArray.append(query_video_button)
+
 
 
 #after making all the buttons, this will add them
