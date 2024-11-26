@@ -15,6 +15,11 @@ def get_all_relationships( node_value):
     """
     Queries all relationships for a node by its ID and prints related node IDs.
     """
+
+    related = {"outgoing":[], "incoming":[], "original":str(node_value)}
+    """
+    Queries all relationships for a node by its ID and prints related node IDs.
+    """
     with driver.session() as session:
         # Query to get relationships from a node with a specific id
         query = """
@@ -42,14 +47,18 @@ def get_all_relationships( node_value):
             if related_node:
                 print(f"Related Node ID (Outgoing): {related_node.id}")
                 relationships_found = True
+                related["outgoing"].append(related_node.id)
                 
             if related_node_in:
                 print(f"Related Node ID (Incoming): {related_node_in.id}")
                 relationships_found = True
+                related["incoming"].append(related_node_in.id)
         
         # If no relationships were found
         if not relationships_found:
             print("No relationships found for this node.")
+        
+        return related
 
 def close_neo4j_connection():
     """
@@ -68,7 +77,6 @@ if __name__ == "__main__":
 
 def ui_run(node_value):
     # Get all relationships for the node and print related node IDs
-    get_all_relationships(node_value)
+    return get_all_relationships(node_value)
 
-    # Close the connection
-    close_neo4j_connection(driver)
+

@@ -85,7 +85,7 @@ def topXViewedVideos():
     result = "" #mostViews.topXVideos(num1)
     outputLabel.config(text = result)
 
-def query():
+def query_video():
     global executeQuery
     instructionLabel.config(text= "What's the videoID?")
     executeButton.wait_variable(executeQuery)
@@ -94,6 +94,17 @@ def query():
     result = str(qry.ui_run(video_id=vidID))
 
     outputLabel.config(text = result)
+
+def query_relation():
+    global executeQuery
+    instructionLabel.config(text= "What's the videoID?")
+    executeButton.wait_variable(executeQuery)
+    vidID = str(userEntry.get())
+
+    result = str(qryrel.ui_run(vidID))
+
+    outputLabel.config(text = result)
+
 
 #array of buttons for easy grid making
 buttonsArray = []
@@ -143,9 +154,11 @@ most_recommended_cat_for_video_button = tk.Button(main, text = "Most Recommended
 buttonsArray.append(most_recommended_cat_for_video_button)
 
 
-query_video_button = tk.Button(main, text = "Query VideoID", command=query)
+query_video_button = tk.Button(main, text = "Query VideoID", command=query_video)
 buttonsArray.append(query_video_button)
 
+query_related_button = tk.Button(main, text = "Query VideoID relations", command=query_relation)
+buttonsArray.append(query_related_button)
 
 
 #after making all the buttons, this will add them

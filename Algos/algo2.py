@@ -6,7 +6,6 @@ import config
 
 # Replace these with your Neo4j credentials
 
-
 # Initialize the Neo4j driver
 
 driver = config.DRIVER
@@ -28,7 +27,6 @@ def main():
 
     df = spark.createDataFrame(data) #dataframe containing all related_to relations, with source being source video id and dest being destination id
     df.show()
-
 
     rdd = df.rdd
     rdd = rdd.flatMap(lambda row: [(cat, 1) for cat in row['category']]) #map, (category, 1), have to do the python list thing because category is a list

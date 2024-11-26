@@ -4,7 +4,6 @@ import time
 import config
 #The first algorithm, this just counts the videoids that are most recommended
 
-
 # Replace these with your Neo4j credentials
 
 # Initialize the Neo4j driver
@@ -17,7 +16,6 @@ def get_related(tx):
     query = "MATCH (v1:Video)-[:RELATED_TO]->(v2:Video) RETURN id(v1) AS source, id(v2) AS dest"
     return list(tx.run(query))
 
-
 def main():
     with driver.session() as session:
         relateds = session.execute_read(get_related)
@@ -29,7 +27,6 @@ def main():
 
     df = spark.createDataFrame(data) #dataframe containing all related_to relations, with source being source video id and dest being destination id
     df.show()
-
 
     rdd = df.rdd
     rdd = rdd.flatMap(lambda row: [(row['dest'], 1)]) #map, (video, 1)
@@ -45,7 +42,6 @@ def main():
         f.write(f"Runtime (seconds): {runtime}\n")
         for item in top_30:
             f.write(f"{item}\n")
-
 
 if __name__ == "__main__":
     main()

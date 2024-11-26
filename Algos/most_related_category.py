@@ -2,7 +2,6 @@ from neo4j import GraphDatabase
 import time
 import config
 
-
 start = time.time()
 
 # Initialize the Neo4j driver

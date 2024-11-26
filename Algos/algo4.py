@@ -14,7 +14,6 @@ def get_related(tx):
     query = f"MATCH (src:Video)-[:RELATED_TO*1..{SEARCH_DEPTH}]->(rec:Video) RETURN src.category AS sourcecat, rec.category AS reccat"
     return list(tx.run(query))
 
-
 if __name__ == "__main__":
 
     with driver.session() as session:
@@ -44,7 +43,6 @@ if __name__ == "__main__":
     result = relation_sum.toDF(["categories", "num_relations"])
     result = result.orderBy(result['num_relations'].desc())
     result.show()
-
 
     runtime = time.time() - start
 

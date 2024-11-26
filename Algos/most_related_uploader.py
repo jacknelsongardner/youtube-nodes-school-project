@@ -4,7 +4,6 @@ import config
 
 start = time.time()
 
-
 # Initialize the Neo4j driver
 driver = config.DRIVER
 

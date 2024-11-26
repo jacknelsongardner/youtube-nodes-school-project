@@ -5,7 +5,6 @@ import config
 #the third algorithm, this gets the most recommended categories, searching at
 #the parameter SEARCH_DEPTH depth.
 
-
 # Replace these with your Neo4j credentials
 SEARCH_DEPTH = 2
 # Initialize the Neo4j driver
@@ -37,7 +36,6 @@ if __name__ == "__main__":
     result = relation_sum.toDF(["category", "num_relations"])
     result = result.orderBy(result['num_relations'].desc())
     result.show()
-
 
     runtime = time.time() - start
 

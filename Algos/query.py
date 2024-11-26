@@ -68,7 +68,7 @@ def query_node_and_relations( video_id="LKh7zAJ4nwo"):
         print(start)
         print(end)
 
-        return str(node_result)
+        return node_result
         
 
 def close_neo4j_connection(driver=driver):
