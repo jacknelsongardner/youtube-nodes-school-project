@@ -65,3 +65,10 @@ if __name__ == "__main__":
 
     # Close the connection
     close_neo4j_connection(driver)
+
+def ui_run(node_value):
+    # Get all relationships for the node and print related node IDs
+    get_all_relationships(node_value)
+
+    # Close the connection
+    close_neo4j_connection(driver)
