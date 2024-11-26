@@ -2,15 +2,10 @@ from neo4j import GraphDatabase
 import time
 import config
 
-
-
 start = time.time()
-
 
 # Initialize the Neo4j driver
 driver = config.DRIVER
-
-
 
 def most_related_category_for_vid(tx, node_id):
     result = tx.run("""
@@ -21,9 +16,6 @@ def most_related_category_for_vid(tx, node_id):
         LIMIT 1
     """, node_id=node_id)
     return result.single()
-
-
-
 
 def ui_run(node_id="ztIH6tc6Aa4"):
     with driver.session() as session:
@@ -37,7 +29,6 @@ def ui_run(node_id="ztIH6tc6Aa4"):
         with open('most_related_category_for_vid.txt', 'w') as f:
             f.write(f"Most related category for video: {node_id} is {result['category']}\n")
             f.write(f"Runtime (seconds): {runtime}\n")
-
 
     return result['category']
 
