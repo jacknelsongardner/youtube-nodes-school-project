@@ -62,6 +62,15 @@ def most_recommended_uploader_query():
     uploader = mru.ui_run()
     outputLabel.config(text = "The most recommended uploader is " + uploader)
 
+def topXViewedVideos():
+    global executeQuery
+    instructionLabel.config(text= "How many?")
+    executeButton.wait_variable(executeQuery)
+    num1 = int(userEntry.get())
+
+    result = mostViews.topXVideos(num1)
+    outputLabel.config(text = result)
+
 #array of buttons for easy grid making
 buttonsArray = []
 #add buttons here in this format, set command to correct function
@@ -86,7 +95,7 @@ buttonsArray.append(mostRecommendedCategoryButton)
 mostRecommendedUploaderButton = tk.Button(main, text = 'Most Recommended Uploader', command = most_recommended_uploader_query)
 buttonsArray.append(mostRecommendedUploaderButton)
 
-topViewedVideosButton = tk.Button(main, text = 'Top Viewed Videos', command = query1)
+topViewedVideosButton = tk.Button(main, text = 'Top Viewed Videos', command = topXViewedVideos)
 buttonsArray.append(topViewedVideosButton)
 
 topViewedVideosCategoryButton = tk.Button(main, text = 'Top Viewed Video in Category', command = query1)
