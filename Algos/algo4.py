@@ -1,17 +1,14 @@
 from neo4j import GraphDatabase
 from pyspark.sql import SparkSession
 import time
+import config
 
 #the third algorithm, this gets the most commonly related categories, at search_depth
 
-
-# Replace these with your Neo4j credentials
-uri = "bolt://localhost:7687"  # Neo4j Bolt protocol address
-username = "kai"
-password = "abcd1234"
 SEARCH_DEPTH = 2
 # Initialize the Neo4j driver
-driver = GraphDatabase.driver(uri, auth=(username, password))
+
+driver = config.DRIVER
 
 def get_related(tx):
     query = f"MATCH (src:Video)-[:RELATED_TO*1..{SEARCH_DEPTH}]->(rec:Video) RETURN src.category AS sourcecat, rec.category AS reccat"

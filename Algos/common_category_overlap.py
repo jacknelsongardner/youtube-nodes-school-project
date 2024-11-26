@@ -1,15 +1,10 @@
 from neo4j import GraphDatabase
 import time
+import config
 
 start = time.time()
 
-# Replace these with your Neo4j credentials
-uri = "bolt://localhost:7687"  # Neo4j Bolt protocol address
-username = "agunkel"
-password = "YoutubeLMAO"
-
-# Initialize the Neo4j driver
-driver = GraphDatabase.driver(uri, auth=(username, password))
+driver = config.DRIVER
 
 def find_categories_with_highest_shared_recommendations(tx):
     result = tx.run("""

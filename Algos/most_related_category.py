@@ -1,16 +1,12 @@
 from neo4j import GraphDatabase
 import time
+import Algos.config as config
+
 
 start = time.time()
 
-# Replace these with your Neo4j credentials
-uri = "bolt://localhost:7687"  # Neo4j Bolt protocol address
-username = "agunkel"
-password = "YoutubeLMAO"
-
 # Initialize the Neo4j driver
-driver = GraphDatabase.driver(uri, auth=(username, password))
-
+driver = config.DRIVER
 
 def most_related_category(tx):
     result = tx.run("""

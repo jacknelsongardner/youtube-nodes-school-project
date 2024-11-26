@@ -2,7 +2,7 @@ import json
 from neo4j import GraphDatabase
 
 # Path to the JSON file
-json_file_path = 'login.json'
+json_file_path = 'config.json'
 
 # Read and parse the JSON file
 with open(json_file_path, 'r') as file:
