@@ -1,8 +1,8 @@
 from neo4j import GraphDatabase
 import time
 uri = "bolt://localhost:7687"  # Neo4j Bolt protocol address
-username = "a"
-password = "MoviesAreNe4t."
+username = "jack"
+password = "Xfiles12345!!!!!"
 
 # Initialize the Neo4j driver
 driver = GraphDatabase.driver(uri, auth=(username, password))
@@ -58,4 +58,5 @@ def main():
         end = time.time()
         print(str(end-start))
 
-main()
+if __name__ == "__main__":
+    main()
