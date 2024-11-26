@@ -1,6 +1,6 @@
 import tkinter as tk
-import mostViews
 from Algos import most_related_uploader as mru
+import Algos
 
 #DO NOT TOUCH THESE TWO LINES
 # these two HAVE to be above everything else, except for the import statements

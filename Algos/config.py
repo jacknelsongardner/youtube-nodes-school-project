@@ -18,7 +18,5 @@ print("LOGGING IN WITH :")
 print(f"Name: {USERNAME}")
 print(f"URI: {URI}")
 
-
-
 # Initialize the Neo4j driver
 DRIVER = GraphDatabase.driver(URI, auth=(USERNAME, PASSKEY))
