@@ -1,6 +1,6 @@
 from neo4j import GraphDatabase
 import time
-import Algos.config as config
+import config
 
 
 

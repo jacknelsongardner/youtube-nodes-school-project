@@ -1,6 +1,6 @@
 from neo4j import GraphDatabase
 import time
-import Algos.config as config
+import config
 
 
 start = time.time()
@@ -29,3 +29,6 @@ def ui_run():
             f.write(f"Runtime (seconds): {runtime}\n")
 
         return result['category']
+    
+if __name__ == "__main__":
+    ui_run()
