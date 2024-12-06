@@ -153,43 +153,43 @@ def query_relation():
 #array of buttons for easy grid making
 buttonsArray = []
 #add buttons here in this format, set command to correct function
-topRecommendedVbutton = tk.Button(main, text = 'Top Recommended Videos', command = query1)
-buttonsArray.append(topRecommendedVbutton)
+#topRecommendedVbutton = tk.Button(main, text = 'Top Recommended Videos', command = query1)
+#buttonsArray.append(topRecommendedVbutton)
 
-topCategoriesButton = tk.Button(main, text = 'Top Categories', command = query1)
-buttonsArray.append(topCategoriesButton)
+#topCategoriesButton = tk.Button(main, text = 'Top Categories', command = query1)
+#buttonsArray.append(topCategoriesButton)
 
-topRecommendedCategoriesButton = tk.Button(main, text = 'Top Recommended Categories', command = query1)
-buttonsArray.append(topRecommendedCategoriesButton)
+#topRecommendedCategoriesButton = tk.Button(main, text = 'Top Recommended Categories', command = query1)
+#buttonsArray.append(topRecommendedCategoriesButton)
 
-topRelatedCategoryButton = tk.Button(main, text = 'Top Related Category', command = query1)
-buttonsArray.append(topRelatedCategoryButton)
+#topRelatedCategoryButton = tk.Button(main, text = 'Top Related Category', command = query1)
+#buttonsArray.append(topRelatedCategoryButton)
 
-topCategoriesButton = tk.Button(main, text = 'Top Categories', command = query1)
-buttonsArray.append(topCategoriesButton)
+#topCategoriesButton = tk.Button(main, text = 'Top Categories', command = query1)
+#buttonsArray.append(topCategoriesButton)
 
-mostRecommendedCategoryButton = tk.Button(main, text = 'Most Recommended Category', command = query1)
-mostRecommendedCategoryButton = tk.Button(main, text = 'Most Recommended Category', command = most_recommended_category_query)
-buttonsArray.append(mostRecommendedCategoryButton)
+#mostRecommendedCategoryButton = tk.Button(main, text = 'Most Recommended Category', command = query1)
+#mostRecommendedCategoryButton = tk.Button(main, text = 'Most Recommended Category', command = most_recommended_category_query)
+#buttonsArray.append(mostRecommendedCategoryButton)
 
 mostRecommendedUploaderButton = tk.Button(main, text = 'Most Recommended Uploader', command = most_recommended_uploader_query)
 buttonsArray.append(mostRecommendedUploaderButton)
 
-topViewedVideosButton = tk.Button(main, text = 'Top Viewed Videos', command = query1)
-topViewedVideosButton = tk.Button(main, text = 'Top Viewed Videos', command = topXViewedVideos)
-buttonsArray.append(topViewedVideosButton)
+#topViewedVideosButton = tk.Button(main, text = 'Top Viewed Videos', command = query1)
+#topViewedVideosButton = tk.Button(main, text = 'Top Viewed Videos', command = topXViewedVideos)
+#buttonsArray.append(topViewedVideosButton)
 
-topViewedVideosCategoryButton = tk.Button(main, text = 'Top Viewed Video in Category', command = query1)
-buttonsArray.append(topViewedVideosCategoryButton)
+#topViewedVideosCategoryButton = tk.Button(main, text = 'Top Viewed Video in Category', command = query1)
+#buttonsArray.append(topViewedVideosCategoryButton)
 
-topViewedCategoriesButton = tk.Button(main, text = 'Top Viewed Categories', command = query1)
-buttonsArray.append(topViewedCategoriesButton)
+#topViewedCategoriesButton = tk.Button(main, text = 'Top Viewed Categories', command = query1)
+#buttonsArray.append(topViewedCategoriesButton)
 
-mostRecommendedCatFromVidButton = tk.Button(main, text = 'Top Recommended Category from Video', command = query1)
-buttonsArray.append(mostRecommendedCatFromVidButton)
+#mostRecommendedCatFromVidButton = tk.Button(main, text = 'Top Recommended Category from Video', command = query1)
+#buttonsArray.append(mostRecommendedCatFromVidButton)
 
-mostCommonMutualRecCatButton = tk.Button(main, text = 'Top Most Common Mutually Recommended Category', command = query1)
-buttonsArray.append(mostCommonMutualRecCatButton)
+#mostCommonMutualRecCatButton = tk.Button(main, text = 'Top Most Common Mutually Recommended Category', command = query1)
+#buttonsArray.append(mostCommonMutualRecCatButton)
 
 most_commonly_overlappingButton = tk.Button(main, text = "Top two categories which are recommended together the most", command = most_commonly_overlapping_categories_query)
 buttonsArray.append(most_commonly_overlappingButton)
